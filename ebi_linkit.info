@@ -1,0 +1,4 @@
+name = EBI Linkit
+description = Different customization to Linkit
+package = ebi
+core = 7.x

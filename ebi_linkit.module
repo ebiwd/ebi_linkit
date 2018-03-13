@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * To handle different customization related to linkeit.
+ */
+
+ /**
+  * Implements hook_form_alter().
+  */
+ function ebi_linkit_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == "linkit_dashboard_form") {
+    // Add Header Markup.
+    $form['linkit_container']['head'] = array(
+      '#markup' => "<h2>Pick or specify a link</h2>",
+      '#weight' => -20
+    );
+    $form['linkit_container']['head_description'] = array(
+      '#markup' => "<p class='lead'>There are three ways you can link:</p>",
+      '#weight' => -18
+    );
+    // Update Title and Placeholder for Search.
+    $form['linkit_container']['linkit_search']['#title'] = t('A. Search for an article or file on the website to link to');
+    // $form['linkit_container']['linkit_search']['#attributes']['placeholder'] = $form['linkit_container']['linkit_search']['#description'];
+    $form['linkit_container']['linkit_search']['#attributes']['placeholder'] = t('Start typing to find content');
+    $form['linkit_container']['linkit_search']['#description'] = '';
+
+    // Update Title and placeholder for link URL.
+    $form['linkit_container']['linkit_path']['#title'] = t('C. Enter a URL');
+    $form['linkit_container']['linkit_path']['#attributes']['placeholder'] = t('Type or paste a URL');
+    $form['linkit_container']['linkit_path']['#description'] = '';
+
+    // Hide Fieldset.
+    $form['linkit_container']['linkit_attributes']['#attributes']['class'][] = 'hide';
+
+    // Attach JS & CSS.
+    $form['#attached']['js'][] = drupal_get_path('module', 'ebi_linkit') . "/js/custom.js";
+    $form['#attached']['css'][] = drupal_get_path('module', 'ebi_linkit') . "/css/style.css";
+  }
+ }

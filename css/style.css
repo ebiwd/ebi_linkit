@@ -1,0 +1,17 @@
+#edit-linkit-container label {
+  color: rgb(0,124,130);
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+#linkit-imce {
+  font-size: .9rem;
+}
+
+#edit-linkit-insert {
+  margin-bottom: 0;
+}
+
+#linkit-profile-changer {
+  display: none;
+}
